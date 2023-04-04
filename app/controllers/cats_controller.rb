@@ -8,6 +8,8 @@ class CatsController < ApplicationController
         cat = Cat.create(cat_params)
         if cat.valid?
             render json: cat
+        else
+            render json: cat.errors, status: 422
         end
     end
 
@@ -25,8 +27,8 @@ class CatsController < ApplicationController
         render json: cat
     end
 
-    private
-        def cat_params
-            params.require(:cat).permit(:name, :age, :enjoys, :image)
-        end
+private
+    def cat_params
+        params.require(:cat).permit(:name, :age, :enjoys, :image)
+    end
 end
