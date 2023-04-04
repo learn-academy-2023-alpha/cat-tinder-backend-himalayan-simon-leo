@@ -6,7 +6,7 @@ RSpec.describe "Cats", type: :request do
       Cat.create(
         name: "Tom",
         age: 80,
-        enjoys: "hunting",
+        enjoys: "hunting Jerry",
         image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
       )
 
@@ -25,7 +25,7 @@ RSpec.describe "Cats", type: :request do
         cat: {
           name: "Tom",
           age: 80,
-          enjoys: "hunting",
+          enjoys: "hunting Jerry",
           image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
         }
       }
@@ -38,7 +38,7 @@ RSpec.describe "Cats", type: :request do
 
       expect(cat.name).to eq 'Tom'
       expect(cat.age).to eq 80
-      expect(cat.enjoys).to eq 'hunting'
+      expect(cat.enjoys).to eq 'hunting Jerry'
       expect(cat.image).to eq 'https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png'
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe "Cats", type: :request do
         cat: {
           name: "Tom",
           age: 80,
-          enjoys: "hunting",
+          enjoys: "hunting Jerry",
           image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
         }
       }
@@ -61,7 +61,7 @@ RSpec.describe "Cats", type: :request do
         cat: {
           name: "Tom",
           age: 85,
-          enjoys: "hunting",
+          enjoys: "hunting Jerry",
           image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
         }
       }
@@ -79,7 +79,7 @@ RSpec.describe "Cats", type: :request do
           cat: {
           name: "Tom",
           age: 80,
-          enjoys: "hunting",
+          enjoys: "hunting Jerry",
           image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
         }
       }
@@ -98,7 +98,7 @@ RSpec.describe "Cats", type: :request do
       cat_params = {
           cat: {
           age: 80,
-          enjoys: "hunting",
+          enjoys: "hunting Jerry",
           image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
         }
       }
@@ -113,7 +113,7 @@ RSpec.describe "Cats", type: :request do
       cat_params = {
         cat: {
         name: "Tom",
-        enjoys: "hunting",
+        enjoys: "hunting Jerry",
         image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
       }
     }
@@ -152,11 +152,6 @@ RSpec.describe "Cats", type: :request do
     cat = JSON.parse(response.body)
     expect(cat['image']).to include "can't be blank"
     end
-
-
   end
 
-
-
-  
 end

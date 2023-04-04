@@ -27,8 +27,8 @@ class CatsController < ApplicationController
         render json: cat
     end
 
-    private
-        def cat_params
-            params.require(:cat).permit(:name, :age, :enjoys, :image)
-        end
+private
+    def cat_params
+        params.require(:cat).permit(:name, :age, :enjoys, :image)
+    end
 end
