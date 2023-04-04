@@ -93,5 +93,70 @@ RSpec.describe "Cats", type: :request do
     end
   end
 
+  describe "won't create a cat with all valid atributes" do
+    it "doesn't create a cat without a name" do 
+      cat_params = {
+          cat: {
+          age: 80,
+          enjoys: "hunting",
+          image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
+        }
+      }
+      post '/cats', params: cat_params
+      expect(response.status).to eq 422
+
+      cat = JSON.parse(response.body)
+      expect(cat['name']).to include "can't be blank"
+    end
+
+    it "doesn't create a cat without an age" do 
+      cat_params = {
+        cat: {
+        name: "Tom",
+        enjoys: "hunting",
+        image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
+      }
+    }
+
+    post '/cats', params: cat_params
+    expect(response.status).to eq 422
+    cat = JSON.parse(response.body)
+    expect(cat['age']).to include "can't be blank"
+    end
+
+    it "doesn't create a cat without an enjoys" do 
+      cat_params = {
+        cat: {
+        name: "Tom",
+        age: 80, 
+        image: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png"
+      }
+    }
+
+    post '/cats', params: cat_params
+    expect(response.status).to eq 422
+    cat = JSON.parse(response.body)
+    expect(cat['enjoys']).to include "can't be blank"
+    end
+
+    it "doesn't create a cat without an image" do 
+      cat_params = {
+        cat: {
+        name: "Tom",
+        age: 80, 
+      }
+    }
+
+    post '/cats', params: cat_params
+    expect(response.status).to eq 422
+    cat = JSON.parse(response.body)
+    expect(cat['image']).to include "can't be blank"
+    end
+
+
+  end
+
+
+
   
 end
